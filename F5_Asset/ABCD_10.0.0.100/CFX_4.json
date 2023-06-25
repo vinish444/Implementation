@@ -89,57 +89,36 @@
         },
         "application_2": {
             "class": "Application",
-            "pool.2gui.com": {
+            "pool.gui.com": {
                 "class": "Pool",
-                "remark": "CHG000123",
+                "remark": "CHSDFSDX",
                 "loadBalancingMode": "round-robin",
                 "members": [
                     {
                         "servicePort": 443,
                         "serverAddresses": [
-                            "17.0.0.1"
+                            "12.0.0.12",
+                            "12.0.0.13"
                         ],
                         "addressDiscovery": "static"
                     }
                 ],
                 "monitors": [
                     {
-                        "use": "/CFX_4/application_2/mon.gui2.com"
+                        "use": "/CFX_4/application_2/mon_gui_test"
                     }
                 ],
                 "minimumMonitors": 1
             },
-            "mon.gui2.com": {
+            "mon_gui_test": {
                 "send": "GET out",
                 "class": "Monitor",
-                "remark": "CHG000123",
+                "remark": "CHSDFSDX",
                 "ciphers": "DEFAULT",
-                "receive": "Welcom",
+                "receive": "welcome",
                 "monitorType": "https",
                 "interval": 5,
                 "timeout": 10
-            },
-            "vip.dsfsdf.gui": {
-                "pool": "pool.2gui.com",
-                "snat": "none",
-                "class": "Service_HTTPS",
-                "layer4": "tcp",
-                "remark": "CHG000123",
-                "serverTLS": "test.server.gui.xxx1",
-                "clientTLS": "test.client.gui.xxx1",
-                "profileTCP": {
-                    "bigip": "/Common/tcp"
-                },
-                "profileHTTP": {
-                    "bigip": "/Common/http"
-                },
-                "virtualPort": 8443,
-                "virtualAddresses": [
-                    "111.112.113.114"
-                ],
-                "persistenceMethods": [
-                    "cookie"
-                ]
             },
             "certificate_2": {
                 "class": "Certificate",
@@ -151,7 +130,7 @@
                 "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5x+MW4dBbaKYo\nhmX9v/AOVNU88uTd5wK5PN0dTTEvjyOR00B1VyQJ774k096JAsM+moUGMXCPNH8n\nkmIgqbz87CEnMUCF4n1V6CXqyx+Ux1HdAVYFGOdSVFOkyeNlw69EJR5bREyVOPBX\nZ8Mj+xS3xawg7HD48BUSI9poUD07qkVSodCE9vm6tm9qOy/1XFEo41N+CpY4hR+j\noflgYBlq7ffsOZFLfkErcv3z3HB1HpGuPQxzn985CEtrUyiIZx2WcJwWJ4CYfUG+\nr5ZbLUIYd3rW/qtmetSTQVWAjkUoxRA9HSMs32da7zVTz+38EgK1LMTDkxJUuZs9\nrQjuDRYPAgMBAAECggEATJUE3BBe6udjIy5vyZ++7bFzq2m3BXAuc7yOq38ACQpY\nz8qE9jnjLcNpntXFlLYSVPKuZkSoEShDSEUz9SHzOVF/QyAu6GHaZ7jINJbh4Fsf\nuFpOItDGvm3rgvEEL5VwYMdqUZYAebzcejNYQjNEsZKnJ3VABqY1EWK9LCXzb+3G\nyEdx1fBwmAbZW8cokkRLdmeTFfRuTI1mHnZLv+eL7hq9QHv9dvwzfDdow7UATxAr\n7LUPVLZliqzld+iXJd2wZF8/zMaM38Nv0i8kn1h49iA5rv2rhXAmBVovQXC4DF6/\ncV1LwnQnBkwSjx7hidzc11nC4GUK9VHERA5cNDCamQKBgQDryxHiI2SbA1FWHBYi\nlQrRxQgiWruGxQr5fWBTQbCw+UArFNQl+549JqbRQqjZrpHMjuo+7p0iD0q0ZHZY\nd/AkzA6LsmyEPpgNxYtFS5QcuHS7H4GmtJQ3sn29tnnFVLyCY+8BsNiUIgKuaA87\n7DvFUBxKjPcQMS3qNqf7ywAi+QKBgQDJs5+pCpMIcmLdFD3Aw14xfr+2JeoiJIoz\nJuH2av4xgCNDBQyoV7qoHIRf8m6cP1Tp4Y3UJnTjv7Hd4Ypk88l7ZfRi/fMdm+0Z\numkqqgOgF/U4Cp5J4hqVpJzn7VTI72DjBJjfW7lCV/ikvXyMDk6zusT6yGO8fIwZ\nIgVAqZQ7RwKBgHFxu0Hsu1ulRf3C95dd093HCTnWI4EczkHo425LHaKX2RqhI8y+\neYx8SyhFBQ3uYnFjlSoADZO0fcG60AGSevSJRLpLdtBNeUSu9Wm6iiEjUe4xo2Q8\nX09Izhx3bbDWKvgk8noCxsDGeDnHEQVIjB1LhMENf1TIBIo6D6oiKgepAoGAdza6\nZEACvVhWRJLlGNyf/KMMjo0EQF/WavtNTMbaLMmujbsbSxhnE1ufhdIVPDZWatHM\ncRq1tbKkXx8iHB7W9B9DfYrZOaPiVHWQGQ5ZjDL81b245rRDwDSGJLJqjUSmwCcE\nb+eXrLWwGTaBuYnvTF1UdWEhSdNXPreT4S8ZlJsCgYEAh87ROV84Y+XXODojBkIJ\nneoVuW0exo5IAlpWw/8nzjg3cW2x/xdgbbPjj7aelT/t6NI3yGZV46UD/7uCDoNJ\n+Ydy6m2WrsXr8fCiqR5Nir3ItAJK3cqDbASsofyGM+uU4RoQ4npPPa2K7sfJU8ch\nXpc5mboWkqUojrR4F764/o0=\n-----END PRIVATE KEY-----\n",
                 "certificate": "-----BEGIN CERTIFICATE-----\nMIIDUDCCAjigAwIBAgIEGSyjdDANBgkqhkiG9w0BAQsFADBqMQswCQYDVQQGEwJJ\nTjEPMA0GA1UECBMGa2VyYWxhMRAwDgYDVQQHEwdkaW5raXJpMQ8wDQYDVQQKEwZk\nb25rYW4xDzANBgNVBAsTBmRpbmthbjEWMBQGA1UEAxMNd3d3LnZpbnNoLmNvbTAe\nFw0yMzA1MjExNzAzNDhaFw0yNDA1MjAxNzAzNDhaMGoxCzAJBgNVBAYTAklOMQ8w\nDQYDVQQIEwZrZXJhbGExEDAOBgNVBAcTB2RpbmtpcmkxDzANBgNVBAoTBmRvbmth\nbjEPMA0GA1UECxMGZGlua2FuMRYwFAYDVQQDEw13d3cudmluc2guY29tMIIBIjAN\nBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAucfjFuHQW2imKIZl/b/wDlTVPPLk\n3ecCuTzdHU0xL48jkdNAdVckCe++JNPeiQLDPpqFBjFwjzR/J5JiIKm8/OwhJzFA\nheJ9Vegl6ssflMdR3QFWBRjnUlRTpMnjZcOvRCUeW0RMlTjwV2fDI/sUt8WsIOxw\n+PAVEiPaaFA9O6pFUqHQhPb5urZvajsv9VxRKONTfgqWOIUfo6H5YGAZau337DmR\nS35BK3L989xwdR6Rrj0Mc5/fOQhLa1MoiGcdlnCcFieAmH1Bvq+WWy1CGHd61v6r\nZnrUk0FVgI5FKMUQPR0jLN9nWu81U8/t/BICtSzEw5MSVLmbPa0I7g0WDwIDAQAB\nMA0GCSqGSIb3DQEBCwUAA4IBAQCQh6s9jwxe32KgJLYN6oswMWdET+nZclYUoPfB\n1jNS/ybDBbB6T3paZxwa0rRvHkSVF6Kk2q3YSHt8Rkpum71rWZu7BddOJvmq/aLH\nmLfFFv55+cIwS4tfR3qjVendblcBJRA1qwe2qNhIDBRNWvkPTuCzkKLDa+tbj9b7\nC5c4ZvaORjidAJ6sMopb2vDpGy5PAMQZ02D9k4f8KMHw51h8NQUOiQVWKypU1TQN\nqshYjhGIDBtUxfp2HwJ8iZyIq6pBbULuXa7MmFORgbN0KbR6EVQW5zwT1vRfddUG\n0/2R0JuN2EpoG/j+U5lyHrvPe0wIsA7rXZ2VhTwiQd6WTtbO\n-----END CERTIFICATE-----\n"
             },
-            "test.server.gui.xxx1": {
+            "test01_server_profile": {
                 "class": "TLS_Server",
                 "certificates": [
                     {
@@ -159,7 +138,7 @@
                     }
                 ]
             },
-            "test.client.gui.xxx1": {
+            "test01_client_profile": {
                 "class": "TLS_Client",
                 "clientCertificate": "certificate_1"
             }
