@@ -97,8 +97,7 @@
                     {
                         "servicePort": 443,
                         "serverAddresses": [
-                            "17.0.0.12",
-                            "17.0.0.13"
+                            "17.0.0.1"
                         ],
                         "addressDiscovery": "static"
                     }
@@ -119,6 +118,28 @@
                 "monitorType": "https",
                 "interval": 5,
                 "timeout": 10
+            },
+            "vip.dsfsdf.gui": {
+                "pool": "pool.2gui.com",
+                "snat": "none",
+                "class": "Service_HTTPS",
+                "layer4": "tcp",
+                "remark": "CHG000123",
+                "serverTLS": "test.server.gui.xxx1",
+                "clientTLS": "test.client.gui.xxx1",
+                "profileTCP": {
+                    "bigip": "/Common/tcp"
+                },
+                "profileHTTP": {
+                    "bigip": "/Common/http"
+                },
+                "virtualPort": 8443,
+                "virtualAddresses": [
+                    "111.112.113.114"
+                ],
+                "persistenceMethods": [
+                    "cookie"
+                ]
             },
             "certificate_2": {
                 "class": "Certificate",
