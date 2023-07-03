@@ -9,7 +9,7 @@
         uri:
             url: "https://10.0.0.100/mgmt/shared/appsvcs/declare"
             method: POST
-            body: "{{ lookup('template','CHG000124.json', split_lines=False) }}"
+            body: "{{ lookup('template','CFX_4.json', split_lines=False) }}"
             status_code: 200
             timeout: 300
             body_format: json
