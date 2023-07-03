@@ -1,0 +1,20 @@
+---
+   - name: F5 AS3
+     hosts: ABCD
+     connection: local
+     gather_facts: false
+
+     tasks:
+      - name: PUSH AS3
+        uri:
+            url: "https://10.0.0.100/mgmt/shared/appsvcs/declare"
+            method: POST
+            body: "{{ lookup('template','CHG000124.json', split_lines=False) }}"
+            status_code: 200
+            timeout: 300
+            body_format: json
+            force_basic_auth: yes
+            user: "{{ user }}"
+            password: "{{ password }}"
+            validate_certs: no
+        delegate_to: localhost
